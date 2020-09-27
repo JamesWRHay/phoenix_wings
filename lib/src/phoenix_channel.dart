@@ -201,7 +201,7 @@ class PhoenixChannel {
     if (payload != null && handledPayload == null) {
       throw ("channel onMessage callback must return payload modified or unmodified");
     }
-    _bindings.where((bound) => bound.event == event).forEach((bound) =>
+    List.from(_bindings).where((bound) => bound.event == event).forEach((bound) =>
         bound.callback(handledPayload, ref, joinRefParam ?? joinRef));
   }
 
